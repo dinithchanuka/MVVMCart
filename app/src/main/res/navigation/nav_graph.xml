@@ -8,8 +8,8 @@
     <fragment
         android:id="@+id/shopFragment"
         android:name="tqt.triquetra.mvvmcart.views.ShopFragment"
-        android:label="fragment_shop"
-        tools:layout="@layout/fragment_shop" >
+        android:label="Shop"
+        tools:layout="@layout/fragment_shop">
         <action
             android:id="@+id/action_shopFragment_to_productDetailFragment"
             app:destination="@id/productDetailFragment"
@@ -24,8 +24,8 @@
     <fragment
         android:id="@+id/productDetailFragment"
         android:name="tqt.triquetra.mvvmcart.views.ProductDetailFragment"
-        android:label="fragment_product_detail"
-        tools:layout="@layout/fragment_product_detail" >
+        android:label="Product Detail"
+        tools:layout="@layout/fragment_product_detail">
         <action
             android:id="@+id/action_productDetailFragment_to_cartFragment"
             app:destination="@id/cartFragment" />
@@ -33,8 +33,8 @@
     <fragment
         android:id="@+id/cartFragment"
         android:name="tqt.triquetra.mvvmcart.views.CartFragment"
-        android:label="fragment_cart"
-        tools:layout="@layout/fragment_cart" >
+        android:label="Cart"
+        tools:layout="@layout/fragment_cart">
         <action
             android:id="@+id/action_cartFragment_to_orderFragment"
             app:destination="@id/orderFragment"
@@ -43,8 +43,8 @@
     <fragment
         android:id="@+id/orderFragment"
         android:name="tqt.triquetra.mvvmcart.views.OrderFragment"
-        android:label="fragment_order"
-        tools:layout="@layout/fragment_order" >
+        android:label="Order"
+        tools:layout="@layout/fragment_order">
         <action
             android:id="@+id/action_orderFragment_to_shopFragment"
             app:destination="@id/shopFragment" />
