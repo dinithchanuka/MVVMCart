@@ -80,7 +80,7 @@ public class ShopFragment extends Fragment implements ShopListAdapter.ShopInterf
                     })
             .show();
         }else{
-            Snackbar.make(requireView(),"Already have max quantityin cart.",Snackbar.LENGTH_LONG)
+            Snackbar.make(requireView(),"Already have max quantity in cart.",Snackbar.LENGTH_LONG)
                     .show();
         }
     }

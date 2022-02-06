@@ -21,7 +21,7 @@ import tqt.triquetra.mvvmcart.databinding.FragmentCartBinding;
 import tqt.triquetra.mvvmcart.models.CartItem;
 import tqt.triquetra.mvvmcart.viewmodels.ShopViewModel;
 
-public class CartFragment extends Fragment {
+public class CartFragment extends Fragment implements CartListAdapter.CartInterface {
 
     ShopViewModel shopViewModel;
     FragmentCartBinding fragmentCartBinding;
@@ -43,7 +43,7 @@ public class CartFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        CartListAdapter cartListAdapter = new CartListAdapter();
+        CartListAdapter cartListAdapter = new CartListAdapter(this);
         fragmentCartBinding.cartRecyclerView.setAdapter(cartListAdapter);
         fragmentCartBinding.cartRecyclerView.addItemDecoration(new DividerItemDecoration(requireContext(),DividerItemDecoration.VERTICAL));
         shopViewModel = new ViewModelProvider(requireActivity()).get(ShopViewModel.class);
@@ -53,5 +53,10 @@ public class CartFragment extends Fragment {
                 cartListAdapter.submitList(cartItems);
             }
         });
+    }
+
+    @Override
+    public void deleteItem(CartItem cartItem) {
+        shopViewModel.removeItemFromCart(cartItem);
     }
 }
