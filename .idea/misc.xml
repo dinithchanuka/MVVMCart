@@ -3,10 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/sample/MVVMCart/app/src/main/res/drawable/badge_shape.xml" value="0.1" />
         <entry key="..\:/sample/MVVMCart/app/src/main/res/font/font.xml" value="0.14791666666666667" />
         <entry key="..\:/sample/MVVMCart/app/src/main/res/font/open_sans.xml" value="0.14791666666666667" />
+        <entry key="..\:/sample/MVVMCart/app/src/main/res/layout/cart_action_item.xml" value="0.8138297872340425" />
         <entry key="..\:/sample/MVVMCart/app/src/main/res/layout/cart_row.xml" value="0.22" />
         <entry key="..\:/sample/MVVMCart/app/src/main/res/layout/fragment_cart.xml" value="0.11770833333333333" />
+        <entry key="..\:/sample/MVVMCart/app/src/main/res/layout/fragment_order.xml" value="0.20416666666666666" />
         <entry key="..\:/sample/MVVMCart/app/src/main/res/layout/fragment_product_detail.xml" value="0.1" />
         <entry key="..\:/sample/MVVMCart/app/src/main/res/layout/fragment_shop.xml" value="0.10778985507246377" />
         <entry key="..\:/sample/MVVMCart/app/src/main/res/layout/shop_raw.xml" value="0.1" />

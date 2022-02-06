@@ -11,6 +11,8 @@ import androidx.navigation.ui.NavigationUI;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -22,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
 
     NavController navController;
     ShopViewModel shopViewModel;
+
+    private int cartQty = 0 ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +39,12 @@ public class MainActivity extends AppCompatActivity {
         shopViewModel.getCart().observe(this, new Observer<List<CartItem>>() {
             @Override
             public void onChanged(List<CartItem> cartItems) {
-
+                int qty = 0;
+                for (CartItem cartItem: cartItems){
+                    qty += cartItem.getQty();
+                }
+                cartQty = qty;
+                invalidateOptionsMenu();
             }
         });
     }
@@ -43,6 +52,20 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu,menu);
+
+        MenuItem menuItem = menu.findItem(R.id.cartFragment);
+        View actionView = menuItem.getActionView();
+
+        TextView cartBadge = actionView.findViewById(R.id.cart_badge_text_view);
+        cartBadge.setText(String.valueOf(cartQty));
+        cartBadge.setVisibility(cartQty == 0 ? View.GONE : View.VISIBLE);
+
+        actionView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onOptionsItemSelected(menuItem);
+            }
+        });
         return true;
     }
 

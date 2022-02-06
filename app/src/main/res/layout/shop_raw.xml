@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@{product.available ?`Available`:`Out of Stocks`}"
-            android:textColor="@color/purple_200"
+            android:textColor="@{product.available ? @color/colorTextSecondary:@color/red}"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Caption" />
 
         <Button
