@@ -3,6 +3,7 @@ package tqt.triquetra.mvvmcart.adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
@@ -46,10 +47,27 @@ public class CartListAdapter extends ListAdapter<CartItem,CartListAdapter.CartVi
                     cartInterface.deleteItem(getItem(getAdapterPosition()));
                 }
             });
+
+            cartRowBinding.quantitySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                    int qty = i + 1;
+                    if(qty == getItem(getAdapterPosition()).getQty()){
+                        return;
+                    }
+                    cartInterface.changeQuantity(cartRowBinding.getCartItem(), qty);
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
+
+                }
+            });
         }
     }
 
     public interface CartInterface{
         void deleteItem(CartItem cartItem);
+        void changeQuantity(CartItem cartItem, int qty);
     }
 }

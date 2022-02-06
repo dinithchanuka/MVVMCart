@@ -59,4 +59,9 @@ public class CartFragment extends Fragment implements CartListAdapter.CartInterf
     public void deleteItem(CartItem cartItem) {
         shopViewModel.removeItemFromCart(cartItem);
     }
+
+    @Override
+    public void changeQuantity(CartItem cartItem, int qty) {
+        shopViewModel.changeQuantity(cartItem,qty);
+    }
 }
