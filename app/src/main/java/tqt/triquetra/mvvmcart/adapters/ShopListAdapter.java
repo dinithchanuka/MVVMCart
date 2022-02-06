@@ -14,8 +14,10 @@ import tqt.triquetra.mvvmcart.models.Product;
 
 public class ShopListAdapter extends ListAdapter<Product,ShopListAdapter.ShopViewHolder> {
 
-    public ShopListAdapter() {
+    ShopInterface shopInterface;
+    public ShopListAdapter(ShopInterface shopInterface) {
         super(Product.itemCallback);
+        this.shopInterface = shopInterface;
     }
 
     @NonNull
@@ -23,6 +25,7 @@ public class ShopListAdapter extends ListAdapter<Product,ShopListAdapter.ShopVie
     public ShopViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         ShopRawBinding shopRawBinding = ShopRawBinding.inflate(layoutInflater,parent,false);
+        shopRawBinding.setShopInterface(shopInterface);
         return new ShopViewHolder(shopRawBinding);
     }
 

@@ -7,6 +7,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.DividerItemDecoration;
 
 import android.view.LayoutInflater;
@@ -26,6 +28,7 @@ public class ShopFragment extends Fragment implements ShopListAdapter.ShopInterf
     FragmentShopBinding fragmentShopBinding;
     private ShopListAdapter shopListAdapter;
     private ShopViewModel shopViewModel;
+    private NavController navController;
 
     public ShopFragment() {
 
@@ -43,7 +46,7 @@ public class ShopFragment extends Fragment implements ShopListAdapter.ShopInterf
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        shopListAdapter = new ShopListAdapter();
+        shopListAdapter = new ShopListAdapter(this);
         fragmentShopBinding.shopRecyclerView.setAdapter(shopListAdapter);
 
         fragmentShopBinding.shopRecyclerView.addItemDecoration(new DividerItemDecoration(requireContext(),
@@ -58,6 +61,8 @@ public class ShopFragment extends Fragment implements ShopListAdapter.ShopInterf
                 shopListAdapter.submitList(products);
             }
         });
+
+        navController = Navigation.findNavController(view);
     }
 
     @Override
@@ -67,6 +72,7 @@ public class ShopFragment extends Fragment implements ShopListAdapter.ShopInterf
 
     @Override
     public void onItemClick(Product product) {
-
+        shopViewModel.setProduct(product);
+        navController.navigate(R.id.action_shopFragment_to_productDetailFragment);
     }
 }
