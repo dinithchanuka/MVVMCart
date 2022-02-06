@@ -6,12 +6,16 @@ import androidx.lifecycle.ViewModel;
 
 import java.util.List;
 
+import tqt.triquetra.mvvmcart.models.CartItem;
 import tqt.triquetra.mvvmcart.models.Product;
+import tqt.triquetra.mvvmcart.repositories.CartRepo;
 import tqt.triquetra.mvvmcart.repositories.ShopRepo;
 
 public class ShopViewModel extends ViewModel {
 
     ShopRepo shopRepo = new ShopRepo();
+    CartRepo cartRepo = new CartRepo();
+
     MutableLiveData<Product> mutableLiveData = new MutableLiveData<>();
 
     public LiveData<List<Product>> getProducts(){
@@ -26,4 +30,11 @@ public class ShopViewModel extends ViewModel {
         return mutableLiveData;
     }
 
+    public LiveData<List<CartItem>> getCart(){
+        return cartRepo.getCart();
+    }
+
+    public boolean addItemToCart(Product product){
+        return cartRepo.addItemToCart(product);
+    }
 }

@@ -1,5 +1,12 @@
 package tqt.triquetra.mvvmcart.models;
 
+import android.widget.Spinner;
+
+import androidx.annotation.NonNull;
+import androidx.databinding.BindingAdapter;
+import androidx.recyclerview.widget.DiffUtil;
+
+import java.security.SecurityPermission;
 import java.util.Objects;
 
 public class CartItem {
@@ -43,4 +50,20 @@ public class CartItem {
         return qty == cartItem.qty && product.equals(cartItem.product);
     }
 
+    @BindingAdapter("android:setVal")
+    public static void getSelectedSpinnerValue(Spinner spinner,int qty){
+        spinner.setSelection(qty -1,true);
+    }
+
+    public static DiffUtil.ItemCallback<CartItem> itemCallback = new DiffUtil.ItemCallback<CartItem>() {
+        @Override
+        public boolean areItemsTheSame(@NonNull CartItem oldItem, @NonNull CartItem newItem) {
+            return oldItem.getProduct().equals(newItem.getProduct());
+        }
+
+        @Override
+        public boolean areContentsTheSame(@NonNull CartItem oldItem, @NonNull CartItem newItem) {
+            return oldItem.equals(newItem);
+        }
+    };
 }

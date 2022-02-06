@@ -67,7 +67,7 @@ public class ShopFragment extends Fragment implements ShopListAdapter.ShopInterf
 
     @Override
     public void addItem(Product product) {
-
+        boolean isAdded = shopViewModel.addItemToCart(product);
     }
 
     @Override
