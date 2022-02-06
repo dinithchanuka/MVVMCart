@@ -6,9 +6,6 @@ import androidx.annotation.NonNull;
 import androidx.databinding.BindingAdapter;
 import androidx.recyclerview.widget.DiffUtil;
 
-import java.security.SecurityPermission;
-import java.util.Objects;
-
 public class CartItem {
     private Product product;
     private int qty;
